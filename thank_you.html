@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Письмо Деду Морозу</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('forest.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000; /* Черный текст */
+            overflow: hidden;
+        }
+
+        #main-content {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Прозрачный белый фон */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #dc3545;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #letter-container {
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0;
+            font-size: 16px;
+            text-align: left;
+            color: #000; /* Черный текст */
+        }
+
+        input {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 80%;
+            position: relative;
+            color: #000; /* Черный текст */
+        }
+
+        #close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #000; /* Черный текст */
+        }
+
+        .balloon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-content">
+        <h1>Добро пожаловать на страницу письма Деду Морозу!</h1>
+        <p>Выберите подарок из списка ниже и отправьте свои пожелания:</p>
+
+        <div id="letter-container">
+            <p>Привет, Дедушка Мороз! Выбери один из подарков, который я могу подарить тебе:</p>
+
+            <label>
+                <input type="radio" name="gift" value="2 плашки оперативной памяти"> 2 плашки оперативной памяти
+            </label>
+
+            <label>
+                <input type="radio" name="gift" value="Новые наушники с мышкой"> Новые наушники с мышкой
+            </label>
+
+            <label>
+                <input type="radio" name="gift" value="Деньги (не желательно)"> Деньги (не желательно)
+            </label>
+
+            <button onclick="openModal()">Отправить</button>
+
+            <!-- Добавленные шарики -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    for (let i = 0; i < 50; i++) {
+                        createBalloon();
+                    }
+                });
+
+                function createBalloon() {
+                    const balloon = document.createElement('div');
+                    balloon.classList.add('balloon');
+                    document.getElementById('letter-container').appendChild(balloon);
+                    moveBalloon(balloon);
+                }
+
+                function moveBalloon(balloon) {
+                    var angle = Math.random() * 360;
+                    var speed = 2 + Math.random() * 2; // Скорость от 2 до 4
+                    var radius = Math.random() * 100 + 50; // Радиус от 50 до 150
+                    var x = Math.cos(angle) * radius;
+                    var y = Math.sin(angle) * radius;
+
+                    var maxX = window.innerWidth - balloon.offsetWidth;
+                    var maxY = window.innerHeight - balloon.offsetHeight;
+
+                    function update() {
+                        x += Math.cos(angle) * speed;
+                        y += Math.sin(angle) * speed;
+
+                        if (x < 0 || x > maxX) {
+                            angle = 180 - angle;
+                        }
+
+                        if (y < 0 || y > maxY) {
+                            angle = -angle;
+                        }
+
+                        balloon.style.transform = "translate(" + x + "px, " + y + "px)";
+                        requestAnimationFrame(update);
+                    }
+
+                    update();
+                }
+            </script>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <div id="modal-content">
+            <span id="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Письмо Деду Морозу</h2>
+            <p>Привет, Дедушка Мороз!</p>
+            <p>Выбран подарок: <span id="selected-gift"></span></p>
+            <p>Отправить ответ на почту zaicev.danyl@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            var selectedGift = document.querySelector('input[name="gift"]:checked');
+            if (selectedGift) {
+                // Set the selected gift in the modal content
+                document.getElementById('selected-gift').innerText = selectedGift.value;
+
+                // Display the modal
+                document.getElementById('modal').style.display = 'flex';
+            } else {
+                alert("Пожалуйста, выберите подарок!");
+            }
+        }
+
+        function closeModal() {
+            // Hide the modal
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
