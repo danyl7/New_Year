@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Письмо Деду Морозу</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Привет, Дедушка Мороз!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saytag+One&display=swap">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Saytag One', sans-serif;
             background-image: url('forest.jpg');
             background-size: cover;
             background-position: center;
@@ -17,48 +17,51 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #000; /* Черный текст */
+            color: #fff; /* Белый текст */
             overflow: hidden;
+            position: relative;
         }
 
         #main-content {
             text-align: center;
-            max-width: 800px;
+            max-width: 600px;
             margin: auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.7); /* Прозрачный белый фон */
+            background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             position: relative;
+            z-index: 2;
         }
 
         h1 {
-            font-size: 36px;
+            font-size: 48px;
             color: #dc3545;
+            margin-bottom: 20px;
         }
 
         p {
             font-size: 18px;
             margin-bottom: 20px;
+            color: #000; /* Чёрный текст */
         }
 
         #letter-container {
             width: 400px;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             background-color: #ffffff;
-            text-align: center;
+            text-align: left;
             margin-top: 20px;
-            position: relative;
+            color: #000; /* Чёрный текст */
         }
 
         label {
             display: block;
             margin: 15px 0;
             font-size: 16px;
-            text-align: left;
-            color: #000; /* Черный текст */
+            color: #000; /* Чёрный текст */
         }
 
         input {
@@ -68,60 +71,83 @@
         button {
             background-color: #dc3545;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
         }
 
-        #modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
+        button:hover {
+            background-color: #c82333; /* Темно-красный при наведении */
         }
 
-        #modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            max-width: 80%;
-            position: relative;
-            color: #000; /* Черный текст */
+        #result-container {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #000; /* Чёрный текст */
         }
 
-        #close-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            color: #000; /* Черный текст */
-        }
-
+        /* Анимированные шарики */
         .balloon {
+            position: absolute;
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            position: absolute;
-            background-color: #dc3545;
+            opacity: 0.7;
+            animation: float 3s infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Анимированные шарики -->
+    <!-- Генерируем шарики в зависимости от размеров экрана -->
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function generateBalloons() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const balloonCount = Math.round((screenWidth * screenHeight) / 10000); // 10 раз больше шариков
+
+            for (let i = 0; i < balloonCount; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.top = Math.random() * 100 + '%';
+                balloon.style.left = Math.random() * 100 + '%';
+                balloon.style.backgroundColor = getRandomColor();
+                document.body.appendChild(balloon);
+            }
+        }
+
+        window.onload = generateBalloons;
+        window.onresize = generateBalloons;
+    </script>
+
     <div id="main-content">
-        <h1>Добро пожаловать на страницу письма Деду Морозу!</h1>
-        <p>Выберите подарок из списка ниже и отправьте свои пожелания:</p>
+        <h1>Привет, Дедушка Мороз!</h1>
 
         <div id="letter-container">
-            <p>Привет, Дедушка Мороз! Выбери один из подарков, который я могу подарить тебе:</p>
+            <p>Я хотел бы поблагодарить тебя за твою невероятную работу каждый год. Твоя магия делает праздники особенными для всех нас. И в этом году я снова с нетерпением жду чудесного волшебства под ёлочкой.</p>
+            <p>Мне было бы очень приятно получить подарок от тебя. Я даже выбрал несколько вариантов, из которых ты можешь выбрать:</p>
 
             <label>
                 <input type="radio" name="gift" value="2 плашки оперативной памяти"> 2 плашки оперативной памяти
@@ -135,83 +161,26 @@
                 <input type="radio" name="gift" value="Деньги (не желательно)"> Деньги (не желательно)
             </label>
 
-            <button onclick="openModal()">Отправить</button>
+            <p>Буду ждать с нетерпением ответа и с удовольствием принимать подарок, который ты выберешь для меня. Ты великолепен!</p>
 
-            <!-- Добавленные шарики -->
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    for (let i = 0; i < 50; i++) {
-                        createBalloon();
-                    }
-                });
-
-                function createBalloon() {
-                    const balloon = document.createElement('div');
-                    balloon.classList.add('balloon');
-                    document.getElementById('letter-container').appendChild(balloon);
-                    moveBalloon(balloon);
-                }
-
-                function moveBalloon(balloon) {
-                    var angle = Math.random() * 360;
-                    var speed = 2 + Math.random() * 2; // Скорость от 2 до 4
-                    var radius = Math.random() * 100 + 50; // Радиус от 50 до 150
-                    var x = Math.cos(angle) * radius;
-                    var y = Math.sin(angle) * radius;
-
-                    var maxX = window.innerWidth - balloon.offsetWidth;
-                    var maxY = window.innerHeight - balloon.offsetHeight;
-
-                    function update() {
-                        x += Math.cos(angle) * speed;
-                        y += Math.sin(angle) * speed;
-
-                        if (x < 0 || x > maxX) {
-                            angle = 180 - angle;
-                        }
-
-                        if (y < 0 || y > maxY) {
-                            angle = -angle;
-                        }
-
-                        balloon.style.transform = "translate(" + x + "px, " + y + "px)";
-                        requestAnimationFrame(update);
-                    }
-
-                    update();
-                }
-            </script>
+            <button onclick="displayResult()">Спасибо</button>
         </div>
-    </div>
 
-    <!-- Modal -->
-    <div id="modal">
-        <div id="modal-content">
-            <span id="close-modal" onclick="closeModal()">&times;</span>
-            <h2>Письмо Деду Морозу</h2>
-            <p>Привет, Дедушка Мороз!</p>
-            <p>Выбран подарок: <span id="selected-gift"></span></p>
-            <p>Отправить ответ на почту zaicev.danyl@gmail.com</p>
-        </div>
+        <div id="result-container"></div>
     </div>
 
     <script>
-        function openModal() {
+        function displayResult() {
             var selectedGift = document.querySelector('input[name="gift"]:checked');
+            var resultContainer = document.getElementById('result-container');
+
             if (selectedGift) {
-                // Set the selected gift in the modal content
-                document.getElementById('selected-gift').innerText = selectedGift.value;
-
-                // Display the modal
-                document.getElementById('modal').style.display = 'flex';
+                resultContainer.innerHTML = `
+                    <p>Спасибо за твой выбор, Дедушка Мороз!</p>
+                `;
             } else {
-                alert("Пожалуйста, выберите подарок!");
+                resultContainer.innerHTML = '<p>Пожалуйста, выберите подарок!</p>';
             }
-        }
-
-        function closeModal() {
-            // Hide the modal
-            document.getElementById('modal').style.display = 'none';
         }
     </script>
 </body>
