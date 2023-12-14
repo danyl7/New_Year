@@ -1,0 +1,154 @@
+body {
+    font-family: 'Saytag One', sans-serif;
+    background-image: url('forest.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; /* Белый текст */
+    overflow: hidden;
+    position: relative;
+}
+
+h1 {
+    font-size: 48px;
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 15px 0;
+    font-size: 16px;
+    color: #000000; /* Белый текст */
+}
+
+input {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    
+}
+
+button:hover {
+    background-color: #961926; /* Темно-красный при наведении */
+}
+
+#result-container {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffffff; /* Белый текст */
+}
+
+/* Анимированные шарики */
+.balloon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float 3s infinite;
+    z-index: 1;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+
+@media only screen and (min-width: 601px) {
+    #main-content {
+        text-align: center;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+        position: relative;
+        z-index: 2;
+    }
+
+    #letter-container {
+        width: 80%; /* Изменено для мобильных устройств */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+        background-color: #ffffff;
+        text-align: left;
+        margin-top: 20px;
+        color: #000000; /* Белый текст */
+        margin: auto; /* Центрирование для мобильных устройств */
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #000000; /* Белый текст */
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    #main-content {
+        text-align: center;
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+        position: relative;
+        z-index: 2;
+        top:+2.5%;
+        left: auto;
+    }
+
+    #letter-container {
+        width: 80%; /* Изменено для мобильных устройств */
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        margin-top: 20px;
+        color: #000000; /* Белый текст */
+        margin: auto; /* Центрирование для мобильных устройств */
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #000000; /* Белый текст */
+        background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный черный фон */
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgb(255, 255, 255);
+    }
+
+    label {
+        display: block;
+        margin: 15px 0;
+        font-size: 16px;
+        color: #000000; /* Белый текст */
+        background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный черный фон */
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgb(255, 255, 255);
+    }
+}

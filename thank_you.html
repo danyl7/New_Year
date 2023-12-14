@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привет, Дедушка Мороз!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saytag+One&display=swap">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function generateBalloons() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const balloonCount = Math.round((screenWidth * screenHeight) / 10000); // 10 раз больше шариков
+
+            for (let i = 0; i < balloonCount; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.top = Math.random() * 100 + '%';
+                balloon.style.left = Math.random() * 100 + '%';
+                balloon.style.backgroundColor = getRandomColor();
+                document.body.appendChild(balloon);
+            }
+        }
+
+        window.onload = generateBalloons;
+        window.onresize = generateBalloons;
+    </script>
+
+    <div id="main-content">
+        <h1>Привет, Дедушка Мороз!</h1>
+
+        <div id="letter-container">
+            <p>Я хотел бы поблагодарить тебя за твою невероятную работу каждый год. Твоя магия делает праздники особенными для всех нас. И в этом году я снова с нетерпением жду чудесного волшебства под ёлочкой.</p>
+            <p>Мне было бы очень приятно получить подарок от тебя. Я даже выбрал несколько вариантов, из которых ты можешь выбрать:</p>
+
+            <label>
+                <input type="radio" name="gift" value="Новые наушники с мышкой"> Новые наушники с мышкой
+            </label>
+
+            <label>
+                <input type="radio" name="gift" value="Деньги (не желательно)"> Деньги (не желательно)
+            </label>
+
+            <p>Буду ждать с нетерпением ответа и с удовольствием принимать подарок, который ты выберешь для меня. Ты великолепен!</p>
+
+            <button onclick="displayResult()">Спасибо</button>
+        </div>
+
+        <div id="result-container"></div>
+    </div>
+
+    <script>
+        function displayResult() {
+            var selectedGift = document.querySelector('input[name="gift"]:checked');
+            var resultContainer = document.getElementById('result-container');
+
+            if (selectedGift) {
+                resultContainer.innerHTML = `
+                    <p>Спасибо за твой выбор, Дедушка Мороз!</p>
+                `;
+            } else {
+                resultContainer.innerHTML = '<p>Пожалуйста, выберите подарок!</p>';
+            }
+        }
+    </script>
+</body>
+</html>
