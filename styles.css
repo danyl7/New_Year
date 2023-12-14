@@ -24,7 +24,7 @@ label {
     display: block;
     margin: 15px 0;
     font-size: 16px;
-    color: #000000; /* Белый текст */
+    color: #000000; /* Черный текст */
 }
 
 input {
@@ -41,7 +41,6 @@ button {
     font-size: 16px;
     transition: background-color 0.3s ease-in-out;
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-    
 }
 
 button:hover {
@@ -74,7 +73,6 @@ button:hover {
     }
 }
 
-
 @media only screen and (min-width: 601px) {
     #main-content {
         text-align: center;
@@ -96,18 +94,16 @@ button:hover {
         background-color: #ffffff;
         text-align: left;
         margin-top: 20px;
-        color: #000000; /* Белый текст */
+        color: #000000; /* Черный текст */
         margin: auto; /* Центрирование для мобильных устройств */
     }
 
     p {
         font-size: 18px;
         margin-bottom: 20px;
-        color: #000000; /* Белый текст */
+        color: #000000; /* Черный текст */
     }
 }
-
-
 
 @media only screen and (max-width: 600px) {
     #main-content {
@@ -119,7 +115,7 @@ button:hover {
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
         position: relative;
         z-index: 2;
-        top:+2.5%;
+        margin-top: 2.5%; /* Центрирование с помощью margin */
         left: auto;
     }
 
@@ -129,15 +125,15 @@ button:hover {
         border-radius: 10px;
         text-align: left;
         margin-top: 20px;
-        color: #000000; /* Белый текст */
+        color: #000000; /* Черный текст */
         margin: auto; /* Центрирование для мобильных устройств */
     }
 
     p {
         font-size: 18px;
         margin-bottom: 20px;
-        color: #000000; /* Белый текст */
-        background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный черный фон */
+        color: #000000; /* Черный текст */
+        background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон */
         border-radius: 15px;
         box-shadow: 0 0 20px rgb(255, 255, 255);
     }
@@ -146,8 +142,8 @@ button:hover {
         display: block;
         margin: 15px 0;
         font-size: 16px;
-        color: #000000; /* Белый текст */
-        background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный черный фон */
+        color: #000000; /* Черный текст */
+        background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон */
         border-radius: 15px;
         box-shadow: 0 0 20px rgb(255, 255, 255);
     }
